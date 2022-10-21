@@ -43,9 +43,7 @@ console.table(usuarioAchado.formasDePagamento)
 }
 
 function buscar(inicial){
-    const func = (u =>  u.nome.includes(inicial) == true)
-    let finding = dadosDosUsuarios.filter(func) 
-    console.table(finding)
+    console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
 }
 
 function remover(idDoUsuarioParaRemover){
@@ -84,6 +82,7 @@ const UsuariosServices = {
     cadastrar,
     listar,
     detalhar,
+    buscar,
     remover,
     alterar,
     addEndereco,

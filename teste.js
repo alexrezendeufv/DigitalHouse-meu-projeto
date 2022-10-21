@@ -65,12 +65,13 @@ console.table(usuarioAchado.formasDePagamento) */
             
             //listarNomes()
 
+//const func = (u =>  u.nome.includes(inicial) == true)
 const dadosDosUsuarios2 = require('./databases/usuarios.json')
     
-    function buscar(inicial){
-    const func = (u =>  u.nome.includes(inicial) == true)
-    let finding = dadosDosUsuarios2.filter(func) 
-    console.table(finding)
+function buscar(inicial){
+    console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
 }
+
+
             
 buscar('no')
