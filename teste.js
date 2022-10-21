@@ -70,8 +70,5 @@ const dadosDosUsuarios2 = require('./databases/usuarios.json')
     
 function buscar(inicial){
     console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
-}
-
-
-            
+}       
 buscar('no')
