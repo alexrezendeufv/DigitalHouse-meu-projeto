@@ -8,7 +8,7 @@ function listar(){
 
 function salvar(arrayDeUsuarios){
     // Seu código aqui
-    fs.writeFileSync('./databases/usuarios.json',JSON.stringify(arrayDeUsuarios,null,6))
+    fs.writeFileSync('./databases/usuarios.json.bk',JSON.stringify(arrayDeUsuarios,null,4))
 }
 
 function cadastrar(objeto){
@@ -43,7 +43,7 @@ console.table(usuarioAchado.formasDePagamento)
 }
 
 function buscar(inicial){
-    console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
+    console.table(dadosDosUsuarios.filter(u =>  u.nome.includes(inicial) )) //== true)) // não precisa do true
 }
 
 function remover(idDoUsuarioParaRemover){
@@ -81,6 +81,7 @@ function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento
 const UsuariosServices = {
     cadastrar,
     listar,
+    salvar,
     detalhar,
     buscar,
     remover,
