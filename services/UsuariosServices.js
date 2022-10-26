@@ -8,7 +8,7 @@ function listar(){
 
 function salvar(arrayDeUsuarios){
     // Seu código aqui
-    fs.writeFileSync('./databases/usuarios.json.bk',JSON.stringify(arrayDeUsuarios,null,4))
+    fs.writeFileSync('./databases/usuarios.json',JSON.stringify(arrayDeUsuarios,null,4))
 }
 
 function cadastrar(objeto){
@@ -18,8 +18,8 @@ function cadastrar(objeto){
             id: dadosDosUsuarios[dadosDosUsuarios.length-1].id + 1,
             nome: objeto.nome,
             email: objeto.email,
-            senha: bcrypt.hash(objeto.senha, 10 ),
-            enderecos: [objeto.enderecos],
+            senha: objeto.senha, //bcrypt.hash(objeto.senha,5),
+            enderecos: [objeto.endereco],
             formasDePagamento: []
     }
     dadosDosUsuarios.push(newObjeto)
@@ -31,7 +31,7 @@ function detalhar(idUsuario){
 
 let usuarioAchado=dadosDosUsuarios.find( u => u.id == idUsuario)
 
-console.log(`nome: ${usuarioAchado.nome} \n`)
+console.log(`nome: ${usuarioAchado.nome}`)
 console.log(`email: ${usuarioAchado.email} \n`)
 console.log('Endereços')
 console.table(usuarioAchado.enderecos)
@@ -48,30 +48,58 @@ function buscar(inicial){
 
 function remover(idDoUsuarioParaRemover){
     // Seu código aqui
+    let arraysemUsuario=dadosDosUsuarios.filter(u => u.id != idDoUsuarioParaRemover)
+    salvar(arraysemUsuario)
+    
 }
 
 function alterar(novosDados, idUsuario){
     // Seu código aqui
+    
+    //let array =[]
+    //for(let i=0;i<dadosDosUsuarios.length;i++){
+    //    array.push(dadosDosUsuarios[i].id)//)
+    //}
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
+
+    dadosDosUsuarios[index].nome = novosDados.nome
+    dadosDosUsuarios[index].email =  novosDados.email    
+    dadosDosUsuarios[index].senha =  novosDados.senha
+    salvar(dadosDosUsuarios)
 }
 
 function addEndereco(novoEndereco, idUsuario){
     // Seu código aqui
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
+    dadosDosUsuarios[index].enderecos.push(novoEndereco)
+    salvar(dadosDosUsuarios)
+
 }
 
 function removerEndereco(posicaoDoEndereco, idUsuario){
 // Seu código aqui
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
+    dadosDosUsuarios[index].enderecos.splice(posicaoDoEndereco,1)
+    salvar(dadosDosUsuarios)
 }
 
 function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario){
-// Seu código aqui        
+// Seu código aqui    
+
 }
 
 function addFormaDePagamento(novaFormaDePagamento, idUsuario){
     // Seu código aqui
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
+    dadosDosUsuarios[index].formasDePagamento.push(novaFormaDePagamento)
+    salvar(dadosDosUsuarios)
 }
 
 function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario){
     // Seu código aqui
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
+    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDoEndereco,1)
+    salvar(dadosDosUsuarios)
 }
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario){

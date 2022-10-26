@@ -66,9 +66,37 @@ console.table(usuarioAchado.formasDePagamento) */
             //listarNomes()
 
 //const func = (u =>  u.nome.includes(inicial) == true)
-const dadosDosUsuarios2 = require('./databases/usuarios.json')
+const dadosDosUsuarios2 = require('../databases/usuarios.json')
+const fs = require('fs')
     
-function buscar(inicial){
-    console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
-}       
-buscar('no')
+//function buscar(inicial){
+//    console.table(dadosDosUsuarios2.filter(u =>  u.nome.includes(inicial) == true)) 
+//}       
+//buscar('no')
+
+function alterar(novosDados, idUsuario){
+    // Seu código aqui
+    let array =[]
+    for(let i=0;i<dadosDosUsuarios2.length;i++){
+        array.push(dadosDosUsuarios2[i].id)
+   }
+    array.indexOf(idUsuario)
+
+   dadosDosUsuarios2[array.indexOf(idUsuario)].nome = novosDados.nome
+   dadosDosUsuarios2[array.indexOf(idUsuario)].email = novosDados.email    
+   dadosDosUsuarios2[array.indexOf(idUsuario)].senha = novosDados.senha
+
+   fs.writeFileSync('./databases/usuarios.json',JSON.stringify(dadosDosUsuarios2,null,4))
+    //let a = dadosDosUsuarios2.find((u,i)=> u.id == idUsuario )    
+    //console.log(a)
+}
+
+
+
+let novosDados={
+    nome: 'Xanxan',
+    email: 'xanxan@gmail.com',
+    senha: 'Senha tarja'
+}
+
+alterar(novosDados, 134)
