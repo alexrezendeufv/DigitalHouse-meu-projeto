@@ -67,7 +67,7 @@ function alterar(novosDados, idUsuario){
     dadosDosUsuarios[index].senha =  novosDados.senha
     salvar(dadosDosUsuarios)
 }
-
+// comecar a testar daqui
 function addEndereco(novoEndereco, idUsuario){
     // Seu código aqui
     let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
@@ -84,7 +84,10 @@ function removerEndereco(posicaoDoEndereco, idUsuario){
 }
 
 function alterarEndereco(posicaoDoEndereco, novoEndereco, idUsuario){
-// Seu código aqui    
+// Seu código aqui  
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario) 
+    dadosDosUsuarios[index].enderecos.splice(posicaoDoEndereco,1,novoEndereco) 
+    salvar(dadosDosUsuarios)
 
 }
 
@@ -104,6 +107,9 @@ function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario){
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario){
     // Seu código aqui
+    let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario) 
+    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDoEndereco,1,novoEndereco) 
+    salvar(dadosDosUsuarios)
 }
 
 const UsuariosServices = {
