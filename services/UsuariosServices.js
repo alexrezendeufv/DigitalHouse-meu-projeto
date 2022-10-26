@@ -115,7 +115,6 @@ function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento
 const UsuariosServices = {
     cadastrar,
     listar,
-    salvar,
     detalhar,
     buscar,
     remover,
