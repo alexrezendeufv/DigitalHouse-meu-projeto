@@ -97,18 +97,18 @@ function addFormaDePagamento(novaFormaDePagamento, idUsuario){
     dadosDosUsuarios[index].formasDePagamento.push(novaFormaDePagamento)
     salvar(dadosDosUsuarios)
 }
-
+//Até aqui deu Certo
 function removerFormaDePagamento(posicaoDaFormaDePagamento, idUsuario){
     // Seu código aqui
     let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario)
-    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDoEndereco,1)
+    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDaFormaDePagamento,1)
     salvar(dadosDosUsuarios)
 }
 
 function alterarFormaDePagamento(novaFormaDePagamento, posicaoDaFormaDePagamento, idUsuario){
     // Seu código aqui
     let index = dadosDosUsuarios.findIndex(u=> u.id == idUsuario) 
-    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDoEndereco,1,novoEndereco) 
+    dadosDosUsuarios[index].formasDePagamento.splice(posicaoDaFormaDePagamento,1,novaFormaDePagamento) 
     salvar(dadosDosUsuarios)
 }
 
