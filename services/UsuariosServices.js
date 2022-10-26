@@ -18,7 +18,7 @@ function cadastrar(objeto){
             id: dadosDosUsuarios[dadosDosUsuarios.length-1].id + 1,
             nome: objeto.nome,
             email: objeto.email,
-            senha: objeto.senha, //bcrypt.hash(objeto.senha,5),
+            senha: bcrypt.hashSync(objeto.senha,5),
             enderecos: [objeto.endereco],
             formasDePagamento: []
     }
